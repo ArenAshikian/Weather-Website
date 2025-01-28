@@ -2,18 +2,11 @@
 let isCelsius = true;
 let isDarkMode = false;
 
-// Event listener for the search button
-document.getElementById('searchButton').addEventListener('click', async () => {
-  const location = document.getElementById('location').value.trim();
+// Function to fetch weather based on location (either entered or current location)
+async function fetchWeather(query) {
   const errorElement = document.getElementById('error');
   const weatherDetails = document.getElementById('weatherDetails');
   const forecastDetails = document.getElementById('forecastDetails');
-
-  // Check if location input is empty
-  if (!location) {
-    errorElement.textContent = 'Please enter a location (e.g., city, zip code, coordinates, or landmark).';
-    return;
-  }
 
   // Clear previous error and show loading message
   errorElement.textContent = '';
@@ -21,14 +14,6 @@ document.getElementById('searchButton').addEventListener('click', async () => {
   forecastDetails.innerHTML = '';
 
   try {
-    let query = location;
-
-    // Check if input looks like GPS coordinates (latitude,longitude)
-    if (/^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$/.test(location)) {
-      const [latitude, longitude] = location.split(',').map(coord => coord.trim());
-      query = `${latitude},${longitude}`;
-    }
-
     // Fetch weather data from the API
     const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=YOURKEYHERE&q=${encodeURIComponent(query)}&days=5&aqi=no`
@@ -81,20 +66,64 @@ document.getElementById('searchButton').addEventListener('click', async () => {
     weatherDetails.innerHTML = '';
     forecastDetails.innerHTML = '';
   }
+}
+
+// Event listener for the search button
+document.getElementById('searchButton').addEventListener('click', () => {
+  const location = document.getElementById('location').value.trim();
+  if (location) {
+    fetchWeather(location);
+  }
+});
+
+// Use Current Location Button
+document.getElementById('currentLocationButton').addEventListener('click', () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+      fetchWeather(`${latitude},${longitude}`);
+    }, error => {
+      alert("Unable to retrieve your location.");
+    });
+  } else {
+    alert("Geolocation is not supported by your browser.");
+  }
 });
 
 // Toggle between Celsius and Fahrenheit
 document.getElementById('toggleTemperatureUnit').addEventListener('click', () => {
   isCelsius = !isCelsius;
-  // Change the text of the button based on the current unit
   document.getElementById('toggleTemperatureUnit').textContent = isCelsius ? '°C' : '°F';
-  // You can trigger the search again or update the displayed data here if needed.
+  // Fetch and update weather data with the new unit
+  const location = document.getElementById('location').value.trim();
+  if (location) {
+    fetchWeather(location);
+  }
 });
 
 // Toggle Dark Mode
 document.getElementById('toggleDarkMode').addEventListener('click', () => {
   isDarkMode = !isDarkMode;
-  // Toggle the dark mode class on body and weather app container
   document.body.classList.toggle('dark-mode', isDarkMode);
   document.querySelector('.weather-app').classList.toggle('dark-mode', isDarkMode);
+});
+
+// Info Modal Toggle
+const infoButton = document.getElementById('infoButton');
+const infoModal = document.getElementById('infoModal');
+const closeModalButton = document.getElementById('closeModalButton');
+
+infoButton.addEventListener('click', () => {
+  infoModal.style.display = 'flex'; // Show modal
+});
+
+closeModalButton.addEventListener('click', () => {
+  infoModal.style.display = 'none'; // Close modal
+});
+
+// Close modal if clicked outside the modal content
+window.addEventListener('click', (e) => {
+  if (e.target === infoModal) {
+    infoModal.style.display = 'none';
+  }
 });

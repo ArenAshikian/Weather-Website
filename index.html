@@ -9,6 +9,7 @@
 <body>
   <div class="weather-app">
     <h1>Weather App</h1>
+    <p>by Aren Ashikian</p>
     <div>
       <!-- Input for user to enter a location -->
       <input type="text" id="location" placeholder="Enter city, zip code, coordinates, or landmark" />
@@ -32,7 +33,31 @@
     
     <!-- Display 5-day forecast here -->
     <div id="forecastDetails" class="forecast-details"></div>
+    
+    <!-- Info button to open/close info modal -->
+    <button id="infoButton">Info ℹ️</button>
   </div>
+  
+  <!-- Info Modal -->
+  <div id="infoModal" class="info-modal">
+    <div class="info-modal-content">
+      <span id="closeModalButton" class="close-modal">&times;</span>
+      <h2>Product Manager Accelerator</h2>
+      <p>The Product Manager Accelerator Program is designed to support PM professionals through every stage of their careers. From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.</p>
+      <p>Our Product Manager Accelerator community is ambitious and committed. Through our program they have learned, honed, and developed new PM and leadership skills, giving them a strong foundation for their future endeavors.</p>
+      <h3>Services We Offer:</h3>
+      <ul>
+        <li><strong>🚀 PMA Pro:</strong> End-to-end product manager job hunting program that helps you master FAANG-level Product Management skills, conduct unlimited mock interviews, and gain job referrals through our largest alumni network. 25% of our offers came from tier 1 companies and get paid as high as $800K/year.</li>
+        <li><strong>🚀 AI PM Bootcamp:</strong> Gain hands-on AI Product Management skills by building a real-life AI product with a team of AI Engineers, data scientists, and designers. We will also help you launch your product with real user engagement using our 100,000+ PM community and social media channels.</li>
+        <li><strong>🚀 PMA Power Skills:</strong> Designed for existing product managers to sharpen their product management skills, leadership skills, and executive presentation skills.</li>
+        <li><strong>🚀 PMA Leader:</strong> We help you accelerate your product management career, get promoted to Director and product executive levels, and win in the board room.</li>
+        <li><strong>🚀 1:1 Resume Review:</strong> We help you rewrite your killer product manager resume to stand out from the crowd, with an interview guarantee. Get started by using our <a href="https://www.drnancyli.com/pmresume" target="_blank">FREE killer PM resume template</a> used by over 14,000 product managers.</li>
+        <li><strong>🚀 Free Training & Courses:</strong> We have published over 500+ free training and courses. Check out our YouTube channel <a href="https://www.youtube.com/c/drnancyli" target="_blank">here</a> and Instagram @drnancyli to start learning for free today.</li>
+      </ul>
+      <p>For more details, visit our <a href="https://www.linkedin.com/school/pmaccelerator/about/" target="_blank">LinkedIn page</a>.</p>
+    </div>
+  </div>
+
   <script src="index.js"></script>
 </body>
 </html>
