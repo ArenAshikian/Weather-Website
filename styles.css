@@ -1,0 +1,176 @@
+/* Base styles for the body */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Styles for dark mode */
+body.dark-mode {
+  background: #333;
+  color: #fff;
+}
+
+/* Weather app container styles */
+.weather-app {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Weather app container styles for dark mode */
+.weather-app.dark-mode {
+  background: #444;
+}
+
+/* Heading styles */
+.weather-app h1 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Heading styles for dark mode */
+.weather-app.dark-mode h1 {
+  color: #fff;
+}
+
+/* Input field styles */
+.weather-app input {
+  width: calc(100% - 110px);
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Button styles */
+.weather-app button {
+  padding: 10px 15px;
+  background: #4facfe;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Button disabled state styles */
+.weather-app button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Weather details section styles */
+.weather-details {
+  margin-top: 20px;
+}
+
+/* Individual weather detail styles */
+.weather-details p {
+  margin: 5px 0;
+  font-size: 1em;
+  color: #555;
+}
+
+/* Forecast details section styles */
+.forecast-details {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  overflow-x: auto; /* Allow horizontal scrolling if the content overflows */
+  gap: 10px; /* Reduce space between each forecast day */
+  justify-content: flex-start; /* Align items to the left */
+  width: 100%; /* Ensure it spans the full width */
+}
+
+/* Heading for the 5-day forecast */
+.forecast-details h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Individual forecast day styles */
+.forecast-details div {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 180px; /* Set the width of each forecast block */
+  text-align: center;
+  flex-shrink: 0; /* Prevent shrinking of the forecast day blocks */
+}
+
+/* Forecast image styles */
+.forecast-details img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Error message styles */
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Toggle buttons container styles */
+.toggle-buttons {
+  margin-top: 20px;
+}
+
+/* Toggle buttons styles */
+.toggle-buttons button {
+  background: #4facfe;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Forecast image styles for better visibility */
+.forecast-details img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Styles for dark mode toggle button */
+body.dark-mode .toggle-buttons button {
+  background: #333;
+  color: #fff;
+}
+
+.weather-app.dark-mode .toggle-buttons button {
+  background: #444;
+}
+
+/* Styles for input and button for dark mode */
+.weather-app.dark-mode input {
+  background: #555;
+  color: #fff;
+  border: 1px solid #777;
+}
+
+.weather-app.dark-mode button {
+  background: #222;
+}
+
+/* Specific styles for dark mode input and buttons */
+body.dark-mode .weather-app button {
+  background: #555;
+}
